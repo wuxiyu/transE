@@ -9,5 +9,5 @@ Finally, also can use pca.py to dimensionality reduction, and plot in .png
 
 THANKS
 ======
-* [Relation_Extraction](https://github.com/mrlyk423/relation_extraction) by Mrlyk423
 * [Paper](https://www.utc.fr/~bordesan/dokuwiki/_media/en/transe_nips13.pdf) (Bordes et al. 2013)
+* [Relation_Extraction](https://github.com/mrlyk423/relation_extraction) by Mrlyk423

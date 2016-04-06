@@ -11,42 +11,6 @@ def loadData(str):
     nameArr = [line[0] for line in sArr]
     return matA, nameArr
 
-def getEig(inputM):
-    covM = cov(inputM, rowvar=0)
-    s,V = linalg.eig(covM)
-    return s,V
-
-def judge(s):
-    s.sort()
-    s = s[::-1] 
-    bili = []
-    i = 0
-    sum1 = 0.0
-    sum2 = s[0]
-    while i<len(s)-1:
-        sum1=sum1+s[i]
-        sum2=sum2+s[i+1]
-        bili.append(sum1/sum2)
-        i+=1
-    plt.plot(range(len(bili)), bili, 'b*')
-    plt.plot(range(len(bili)), bili, 'r')
-    for xy in zip(range(len(bili)),bili):
-        plt.annotate(xy[1], xy=xy, xytext=(-20, 10), textcoords = 'offset points')
-    plt.xlabel("eigenvector")
-    plt.ylabel("eigenvalue")
-    plt.title('fangchabili')
-    plt.legend()
-    plt.show()
-    return bili
-
-def getbaifenbi(bili, num):
-    i = 1
-    for b in bili:
-        if b > num:
-            break
-        i+=1
-    return i
-
 def pca(inputM, k):
     covM = cov(inputM, rowvar=0)
     s, V = linalg.eig(covM)
@@ -76,8 +40,7 @@ def plotV(a, labels):
             if s > 6.7:
                 continue
         ax.annotate(label, xy = (x, y), xytext = None, ha = 'right', va = 'bottom', **font)
-        #,textcoords = 'offset points',bbox = dict(boxstyle = 'round,pad=0.5', fc = 'yellow', alpha = 0.5),
-        # #arrowprops = dict(arrowstyle = '->', connectionstyle = 'arc3,rad=0'))
+
 
     plt.title('TransE pca2dim')
     plt.xlabel('X')
@@ -92,9 +55,6 @@ if __name__ == '__main__':
     mat = row_stack((matEntity, matRelation))
     print(mat.shape)
     nameEntity.extend(nameRelation)
-    #s,V = getEig(mat)
-    #bili= judge(s)
-    #k = getbaifenbi(bili, 0.9)
     k = 2
     a, b = pca(mat, k)
     plotV(a, nameEntity)

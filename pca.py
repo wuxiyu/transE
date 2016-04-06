@@ -1,7 +1,6 @@
 from numpy import *
 import matplotlib.pyplot as plt
 import pylab
-from sklearn.decomposition import PCA
 
 def loadData(str):
     fr = open(str)

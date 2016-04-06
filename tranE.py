@@ -2,14 +2,13 @@ from random import uniform, sample
 from numpy import *
 
 class TransE:
-    def __init__(self, entityList, relationList, tripleList, margin = 1, learingRate = 0.01, dim = 10, lambd = 0.4):
+    def __init__(self, entityList, relationList, tripleList, margin = 1, learingRate = 0.01, dim = 10):
         self.margin=margin
         self.learingRate = learingRate
         self.dim = dim#向量维度
         self.entityList = entityList#一开始，entityList是entity的list；初始化后，变为字典，key是entity，values是其向量。
         self.relationList = relationList#理由同上
         self.tripleList = tripleList#理由同上
-        self.lambd = lambd
         self.loss = 0
 
     def initialize(self):
